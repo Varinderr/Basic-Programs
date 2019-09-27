@@ -14,7 +14,6 @@ struct node
 
  void insert_begin(int d)
   {
-      int c=d;
       node *temp =new node(); 
 	
   if(head==NULL)
@@ -77,7 +76,7 @@ void inset_Pos()
    temp->data=d;
    node *s=head;  
     
-    while (s != NULL)
+    while (s != NULL)//check count
       {
         s = s->next;
         counter++;
@@ -88,7 +87,6 @@ void inset_Pos()
       insert_begin(pos);
     }
    else
-    
     {
       node *ptr = head;
           for(int i=1;i<=pos-2&&counter;i++) 
@@ -98,20 +96,15 @@ void inset_Pos()
            }
            
            node *temp2=new node();
-           temp2=ptr->next;
+           temp2=ptr->next;//previous link
            cout<<temp2->next; 
-           temp->next=temp2;
-           ptr->next=temp;          
-           
-
+           temp->next=temp2;//new link
+           ptr->next=temp;        
     } 
-
-
  }
 
 void delete_pos()
  {
-
    int pos ,counter=0;
    cout<<"Enter the psotion to delete: ";
    cin>>pos;
@@ -127,21 +120,21 @@ void delete_pos()
    if(pos==1)
     {
      node *temp=new node();
-     temp=head;
-     head=temp->next;
+     temp=head;//temp head points to actual head
+     head=temp->next;//head changed to next using temp head next
 
     }
    else
     { 
-     for(int i=1;i<=pos-2 &&i <=counter;i++)
+     for(int i=1;i<=pos-2 && i<=counter;i++)
       {
         ptr=ptr->next;
       }
        node *temp=new node();
        node *temp2=new node();
-       temp=ptr->next;
-       temp2=temp->next;
-       ptr->next=temp2;
+       temp=ptr->next;//temp=3->next  temp=4
+       temp2=temp->next; //temp2=4->next temp2=5
+       ptr->next=temp2; //3->next=temp2 temp2=5
     } 
 
  }
@@ -241,7 +234,6 @@ int main()
   break;
   default: cout<<"invalid input"; 
   break;
-
      }
     }        
     getch();
